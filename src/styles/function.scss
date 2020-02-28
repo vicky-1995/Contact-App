@@ -1,0 +1,141 @@
+.logo {
+  img {
+    width: 200px;
+  }
+}
+
+.set-width {
+  margin: auto 10%;
+}
+
+.filter-contact {
+  h2 {
+    padding: 0px 10px;
+    &:hover {
+      font-family: "OpenSansBold";
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+}
+.all-contacts {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contact-card {
+  color: black;
+  text-decoration: none;
+  box-shadow: 0px 0px 10px 1px rgba(224, 224, 224, 1);
+  margin: 0px 20px 20px;
+  -webkit-transition: -webkit-transform 0.03s;
+  transition: transform 0.03s;
+  &:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .details {
+    font-family: "OpenSansLight";
+    flex-direction: column;
+    font-size: 12px;
+    width: 300px;
+    height: 60px;
+    margin: 0px;
+  }
+  .action {
+    display: none;
+  }
+  &:hover .details {
+    display: none;
+  }
+  &:hover .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      padding: 0px 20px;
+      font-size: 20px;
+      &:hover {
+        color: seagreen;
+      }
+    }
+  }
+}
+
+.AddComponent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.add-button {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+  background: #e60000;
+  border-radius: 50px;
+  -webkit-transition: -webkit-transform 0.03s;
+  transition: transform 0.03s;
+  &:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+#modal button {
+  background-color: #ad343e;
+  padding: 5px 25px;
+  color: white;
+  font-size: 18px;
+  border: #333 1px solid;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+#modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  margin: 0px 30px;
+  background-color: white;
+  max-width: 500px;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#modal .buttons button {
+  margin: 10px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+#modal form {
+  margin: 0px auto;
+}

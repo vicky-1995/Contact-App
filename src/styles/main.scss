@@ -1,0 +1,52 @@
+body {
+  font-family: "OpenSansRegular";
+  margin: 40px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  justify-content: space-between;
+}
+
+.footer {
+  font-family: "OpenSansLight";
+  text-align: center;
+  font-size: 10px;
+  font-weight: 100;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin: 20px;
+  }
+  .example {
+    margin: 0px;
+  }
+  .header {
+    justify-content: center;
+  }
+  .searchbox {
+    display: none;
+  }
+  .AddComponent {
+    bottom: 40px;
+    right: 20px;
+    position: fixed;
+    z-index: 1;
+  }
+  form {
+    margin: 5px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .set-width {
+    margin: auto 25%;
+  }
+}

@@ -1,0 +1,39 @@
+{ "data" : [
+    {
+        "id": 1,
+        "name": "Vikas Pandey",
+        "email": "vikaspandey18@gmail.com",
+        "phone": "+36301968064"
+    },
+    {
+        "id": 2,
+        "name": "Peter Parker",
+        "email": "Iam@spiderman.com",
+        "phone": "+36301868065"
+    }
+    ,
+    {
+        "id": 3,
+        "name": "Tony Stark",
+        "email": "Iam@ironman.com",
+        "phone": "+36301568054"
+    },
+    {
+        "id": 4,
+        "name": "Bruce Wayne",
+        "email": "Iam@batman.com",
+        "phone": "+36301256054"
+    },
+    {
+        "id": 5,
+        "name": "Clark Kent",
+        "email": "Heis@superman.com",
+        "phone": "+36203040505"
+    },
+    {
+        "id": 6,
+        "name": "Steve Jobs",
+        "email": "founder@apple.com",
+        "phone": "+36999999999"
+    }
+]}
