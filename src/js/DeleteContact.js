@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import Modal from "./Modal";
 
-const EditContact = (props) => {
+const DeleteContact = (props) => {
 
     const [isLoading, setLoading] = useState(true); //setting a loading parameter as we are using a value in the render which is yet to be computed from the props suing the function delete contact.
     const [currentContact, setCurrentContact] = useState([])
@@ -41,4 +41,4 @@ const EditContact = (props) => {
     )
 }
 
-export default EditContact;
+export default DeleteContact;
