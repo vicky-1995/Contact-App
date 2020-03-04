@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
+import useForm from "./useForm";
+import validate from "./validate";
 import Modal from "./Modal";
 
 const EditContact = (props) => {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(true); // set loading to false and wait until we fetch the current contact. 
     const [currentContact, setCurrentContact] = useState([]);
+    const { handleInputChange, handleSubmit, values, errors } = useForm(currentContact, submit, validate); // made a Custom Hook  for Form Handling and a function for validation
 
     const editContact = () => {
         setLoading(false);
@@ -12,14 +15,14 @@ const EditContact = (props) => {
         setCurrentContact(result[0]);
     }
 
+    function submit() {
+        props.updateContact(values.id, values);  // using props to pass the function to EditContact component
+        toggleModal()
+    }
     useEffect(() => {
         editContact();
-    }, [isLoading]); // as we are using the value to be computed in the render, this will prevent from warning.
+    }, [isLoading, values]); // as we are using the value to be computed in the render, this will prevent from warning.
 
-    const handleInputChange = event => {
-        const { name, value } = event.target
-        setCurrentContact({ ...currentContact, [name]: value }) // (recommended reading: https://ultimatecourses.com/blog/all-about-immutable-arrays-and-objects-in-javascript)
-    }
     const [modal, setModal] = useState(false);
     const toggleModal = () => setModal(!modal);
 
@@ -31,20 +34,37 @@ const EditContact = (props) => {
             <div className="title">
                 <h1>Edit Contact</h1>
             </div>
-            <form
-                // here we have prevented the default form submission, on submit, passing set contact to be the updated. 
-                onSubmit={event => {
-                    event.preventDefault()
-                    if (!currentContact.name || !currentContact.email || !currentContact.phone) return
-                    props.updateContact(currentContact.id, currentContact);
-                    toggleModal()
-                }}>
+            <form onSubmit={handleSubmit} noValidate>
                 <label>Name</label>
-                <input type="text" name="name" value={currentContact.name} onChange={handleInputChange} />
+                <input
+                    className={`${errors.name && "inputError"}`} // adding a class when error
+                    type="text"
+                    name="name"
+                    value={values.name}
+                    onChange={handleInputChange}
+                />
+                {/* adding error text if error occurs */}
+                {errors.name && <p className="error">{errors.name}</p>}
                 <label>Email</label>
-                <input type="text" name="email" value={currentContact.email} onChange={handleInputChange} />
+                <input
+                    className={`${errors.email && "inputError"}`} // adding a class when error
+                    type="text"
+                    name="email"
+                    value={values.email}
+                    onChange={handleInputChange}
+                />
+                {/* adding error text if error occurs */}
+                {errors.email && <p className="error">{errors.email}</p>}
                 <label>Phone</label>
-                <input type="text" name="phone" value={currentContact.phone} onChange={handleInputChange} />
+                <input
+                    className={`${errors.phone && "inputError"}`} // adding a class when error
+                    type="text"
+                    name="phone"
+                    value={values.phone}
+                    onChange={handleInputChange}
+                />
+                {/* adding error text if error occurs */}
+                {errors.phone && <p className="error">{errors.phone}</p>}
                 <div className="buttons">
                     <button>Update</button>
                     <Link to="/">

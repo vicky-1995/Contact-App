@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
+import validate from "./validate";
+import useForm from "./useForm";
 
 const AddContact = (props) => {
-    const initialFormState = { id: null, name: '', email: '', phone: '' }
-    const [contact, setContact] = useState(initialFormState)
+    const [initialFormState, SetInitialFormState] = useState({});// initialFormState to empty object
+    const { handleInputChange, handleSubmit, values, errors } = useForm(initialFormState, submit, validate); // made a Custom Hook  for Form Handling and a function for validation
     const [modal, setModal] = useState(false);  // settinng the state for the modal.
     const toggleModal = () => setModal(!modal); // toggle the state.
 
-    const handleInputChange = event => {
-        const { name, value } = event.target
-        setContact({ ...contact, [name]: value }) // (recommended reading: https://ultimatecourses.com/blog/all-about-immutable-arrays-and-objects-in-javascript)
+    function submit() {
+        props.addContact(values) // using props to pass the function to AddContact component
+        toggleModal()
     }
 
     return (
@@ -21,22 +23,37 @@ const AddContact = (props) => {
                         <div className="title">
                             <h1>Add Contact</h1>
                         </div>
-                        <form
-                            // here we have prevented the default form submission, on submit, passing contact to be the added. 
-                            onSubmit={event => {
-                                event.preventDefault()
-                                if (!contact.name || !contact.email || !contact.phone) return
-                                // passing the contact to Contact home using the function add contact go to Contact Home to see the custom tag (AddContact)
-                                props.addContact(contact)
-                                setContact(initialFormState)
-                                toggleModal()
-                            }}>
+                        <form onSubmit={handleSubmit} noValidate>
                             <label>Name</label>
-                            <input type="text" name="name" value={contact.name} onChange={handleInputChange} />
+                            <input
+                                className={`${errors.name && "inputError"}`} // adding a class when error
+                                type="text"
+                                name="name"
+                                value={values.name}
+                                onChange={handleInputChange}
+                            />
+                            {/* adding error text if error occurs */}
+                            {errors.name && <p className="error">{errors.name}</p>}
                             <label>Email</label>
-                            <input type="text" name="email" value={contact.email} onChange={handleInputChange} />
+                            <input
+                                className={`${errors.email && "inputError"}`} // adding a class when error
+                                type="text"
+                                name="email"
+                                value={values.email}
+                                onChange={handleInputChange}
+                            />
+                            {/* adding error text if error occurs */}
+                            {errors.email && <p className="error">{errors.email}</p>}
                             <label>Phone</label>
-                            <input type="text" name="phone" value={contact.phone} onChange={handleInputChange} />
+                            <input
+                                className={`${errors.phone && "inputError"}`} // adding a class when error
+                                type="text"
+                                name="phone"
+                                value={values.phone}
+                                onChange={handleInputChange}
+                            />
+                            {/* adding error text if error occurs */}
+                            {errors.phone && <p className="error">{errors.phone}</p>}
                             <div className="buttons">
                                 <button>Add</button>
                                 <button onClick={toggleModal}>No</button>

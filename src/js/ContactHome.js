@@ -15,7 +15,6 @@ const ContactHome = (props) => {
 
     const deleteContacts = (id) => {
         setContacts(contacts.filter(contact => contact.id !== id)); // using filter function to compare the id and filter all contacts except the matched id.
-        console.log(contacts)
     }
 
     const refreshContact = (contacts) => {
