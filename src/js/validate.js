@@ -1,3 +1,4 @@
+//  Validation function for useForm
 export default function validate(values) {
   let errors = {};
   if (!values.name) {   // if name is empty
