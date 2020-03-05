@@ -69,6 +69,7 @@ input {
     transition: background-size 0.5s ease;
   }
   h1:hover {
+    cursor: pointer;
     background-size: 100% 3px;
   }
 }

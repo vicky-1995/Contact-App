@@ -9,6 +9,7 @@
   h2 {
     padding: 0px 10px;
     &:hover {
+      cursor: pointer;
       font-family: "OpenSansBold";
       transform: scale(1.1);
     }
@@ -113,7 +114,7 @@
 #modal > div {
   margin: 0px 30px;
   background-color: white;
-  max-width: 500px;
+  width: 500px;
   padding: 15px;
   border-radius: 5px;
   text-align: center;
