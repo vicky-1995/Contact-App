@@ -1,5 +1,5 @@
 # React Contact App
-
+This application is an application built in React. This application maintains the contact of people.
 ## Installation
 
 **`npm install` Installs node modules.**
